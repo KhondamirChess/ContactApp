@@ -1,10 +1,12 @@
 package org.example;
 
+import java.util.Objects;
+
 public class Contact {
-    private String name;
-    private int phone;
-    private String email;
-    private String group; // Work, Family, Friends
+    private final String name;
+    private final int phone;
+    private final String email;
+    private final String group; // Work, Family, Friends
 
     public Contact(String name, int phone, String email, String group) {
         this.name = name;
@@ -17,33 +19,11 @@ public class Contact {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getPhone() {
-        return phone;
-    }
-
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getGroup() {
         return group;
     }
 
-    public void setGroup(String group) {
-        this.group = group;
-    }
+
 
     @Override
     public String toString() {
@@ -53,5 +33,22 @@ public class Contact {
                 ", email='" + email + '|' +
                 ", group='" + group + '|' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+
+        Contact other = (Contact) obj;
+
+        return phone == other.phone &&
+                Objects.equals(name, other.name) &&
+                Objects.equals(email, other.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, phone, email, group);
     }
 }

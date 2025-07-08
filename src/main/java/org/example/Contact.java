@@ -24,7 +24,6 @@ public class Contact {
     }
 
 
-
     @Override
     public String toString() {
         return "Contact{" +
@@ -49,6 +48,6 @@ public class Contact {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, phone, email, group);
+        return Objects.hash(name, phone, email);
     }
 }
